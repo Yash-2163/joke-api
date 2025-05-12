@@ -1,0 +1,27 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Joke Generator</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    #joke { margin-top: 20px; font-size: 18px; color: #333; }
+  </style>
+</head>
+<body>
+  <h1>Get a Random Joke</h1>
+  <button onclick="fetchJoke()">Tell Me a Joke</button>
+  <p id="joke"></p>
+
+  <script>
+    function fetchJoke() {
+      fetch('/joke')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('joke').innerText = data.joke;
+        });
+    }
+  </script>
+</body>
+</html>
